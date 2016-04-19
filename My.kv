@@ -1,0 +1,105 @@
+#:kivy 1.9.1
+ScreenManagment:
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: "background1.jpg"
+    MainScreen:
+    RandomScreen:
+    BoardScreen1:
+    BoardScreen2:
+
+<MainScreen>:
+    name: 'main'
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: "background2.jpg"
+    FloatLayout:
+        cols:1
+        Button:
+            background_normal: 'button.png'
+            on_press:root.manager.current = 'randomize'
+            size_hint:(0.3, 0.2)
+            font_size:20
+            pos_hint:{'center_x':0.5, 'center_y':0.5}
+        Button:
+            background_normal: 'exit0.png'
+            on_press:app.stop()
+            size_hint:(0.3, 0.2)
+            font_size:20
+            pos_hint:{'center_x':0.5, 'center_y':0.3}
+
+<RandomScreen>:
+    name: 'randomize'
+
+    GridLayout:
+        id: grid
+        padding: 100
+        cols: 10
+    FloatLayout:
+        id: float
+        cols: 2
+        Button:
+            text: 'Start Battle'
+            pos_hint: {'right':0.4, 'y':0}
+            size_hint:(0.3, 0.2)
+            on_press: root.manager.current = 'board1'
+        Button:
+            text: 'Press to randomize Ships'
+            id: btn
+            pos_hint: {'right':0.8, 'y':0}
+            size_hint:(0.4, 0.2)
+            on_press: root.randomize()
+        Button:
+            background_normal: 'exit0.png'
+            pos_hint:{'right':1, 'y':0}
+            size_hint:(0.2, 0.2)
+            on_press: root.exit()
+
+
+<BoardScreen1>:
+    name: 'board1'
+
+    GridLayout:
+        id: grid
+        padding: 100
+        cols: 10
+    FloatLayout:
+        id: float
+        cols: 2
+        Button:
+            text: 'View Board of COMP'
+            pos_hint: {'right':0.6, 'y':0}
+            size_hint:(0.3, 0.1)
+            on_press: root.manager.current = 'board2'
+        Button:
+            background_normal: 'exit0.png'
+            pos_hint:{'right':1, 'y':0}
+            size_hint:(0.2, 0.2)
+            on_press: root.exit()
+
+
+<BoardScreen2>:
+    name: 'board2'
+    GridLayout:
+        id: grid
+        padding: 100
+        cols: 10
+
+    FloatLayout:
+        id: float
+        cols: 10
+        padding: 100
+        Button:
+            text: 'View My Board'
+            pos_hint: {'right':0.6, 'y':0}
+            size_hint:(0.3, 0.1)
+            on_press: root.manager.current = 'board1'
+        Button:
+            background_normal: 'exit0.png'
+            pos_hint:{'right':1, 'y':0}
+            size_hint:(0.2, 0.2)
+            on_press: root.exit()
