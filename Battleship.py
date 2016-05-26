@@ -121,7 +121,7 @@ class BoardScreen2(Screen):
     coords = ListProperty([0, 0])
     popup1 = ModalView(size_hint=(0.4, 0.2), auto_dismiss = False)
     popup1.pos_hint = {'x':0.3, 'y':0.85}
-    popup1.add_widget(Label(text='TURN OF COMP...', font_size = 30))
+    popup1.add_widget(Label(text='Computers Turn, Please wait...', font_size = 16))
     current = 0
     sound = SoundLoader.load('target.mp3')
 
@@ -207,7 +207,7 @@ class BoardScreen2(Screen):
                     button.text = 'X'
 
                     self.sound.stop()
-                    self.sound = SoundLoader.load('Not_ship.mp3')
+                    self.sound = SoundLoader.load('Not_ship.wav')
                     self.sound.play()
 
                     button.background_color = [1, 0, 0, 1]
@@ -251,7 +251,7 @@ class BoardScreen2(Screen):
                         Clock.unschedule(self.my_callback)
                         CURRENT_PLAYER *= -1
                         self.sound.stop()
-                        self.sound = SoundLoader.load('Not_ship.mp3')
+                        self.sound = SoundLoader.load('Not_ship.wav')
                         self.sound.play()
                         Clock.schedule_once(self.callback1, 0.7)
                         TARGETS.remove(child.coords)
@@ -370,6 +370,9 @@ class RandomScreen(Screen):
                     button.background_color = [1, 1, 1, 1]
                     self.ids.grid.add_widget(button)
 
+    def check(self):
+        if SHIPS_OF_PLAYER != DEFAULT:
+            self.manager.current = 'board1'
 
     def randomize(self):
         for child in self.ids.grid.children:

@@ -45,13 +45,13 @@ ScreenManagment:
         Button:
             text: 'Start Battle'
             pos_hint: {'right':0.4, 'y':0}
-            size_hint:(0.3, 0.2)
-            on_press: root.manager.current = 'board1'
+            size_hint:(0.3, 0.15)
+            on_press: root.check()
         Button:
             text: 'Press to randomize Ships'
             id: btn
             pos_hint: {'right':0.8, 'y':0}
-            size_hint:(0.4, 0.2)
+            size_hint:(0.4, 0.15)
             on_press: root.randomize()
         Button:
             background_normal: 'exit0.png'
@@ -71,7 +71,7 @@ ScreenManagment:
         id: float
         cols: 2
         Button:
-            text: 'View Board of COMP'
+            text: 'Press to view computer grid'
             pos_hint: {'right':0.6, 'y':0}
             size_hint:(0.3, 0.1)
             on_press: root.manager.current = 'board2'
@@ -94,7 +94,7 @@ ScreenManagment:
         cols: 10
         padding: 100
         Button:
-            text: 'View My Board'
+            text: 'Press to view your grid'
             pos_hint: {'right':0.6, 'y':0}
             size_hint:(0.3, 0.1)
             on_press: root.manager.current = 'board1'
