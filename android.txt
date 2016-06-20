@@ -1,0 +1,3 @@
+title=BattleShip
+author=Me
+orientation=landscape
